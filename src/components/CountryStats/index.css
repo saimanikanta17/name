@@ -1,0 +1,39 @@
+.stats-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  margin: 50px;
+}
+.stat-card {
+  width: 180px;
+  height: 180px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+.confirmed-card {
+  background-color: #331427;
+  color: #ff073a;
+}
+.active-card {
+  background-color: #132240;
+  color: #007bff;
+}
+
+.recovered-card {
+  background-color: #182829;
+  color: #28a745;
+}
+.deceased-card {
+  background-color: #212230;
+  color: #6c757d;
+}
+
+.pic-size {
+  width: 50px;
+  height: 50px;
+}
