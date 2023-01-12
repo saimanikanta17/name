@@ -60,7 +60,10 @@ class Home extends Component {
       this.getFormattedData(state, fetchedData),
     )
 
-    stateWiseData.sort((a, b) => a.stateName - b.stateName)
+    stateWiseData.sort((a, b) =>
+      a.stateName.toLowerCase() > b.stateName.toLowerCase() ? 1 : -1,
+    )
+
     this.setState({
       apiStatus: apiStatusConstants.success,
       stateWiseData,
@@ -70,7 +73,7 @@ class Home extends Component {
   sortingAsc = () => {
     const {stateWiseData} = this.state
     stateWiseData.sort((a, b) =>
-      a.stateName.toLowerCase() < b.stateName.toLowerCase() ? -1 : 1,
+      a.stateName.toLowerCase() > b.stateName.toLowerCase() ? 1 : -1,
     )
     this.setState({stateWiseData})
   }
@@ -78,7 +81,7 @@ class Home extends Component {
   sortingDesc = () => {
     const {stateWiseData} = this.state
     stateWiseData.sort((a, b) =>
-      a.stateName.toLowerCase() > b.stateName.toLowerCase() ? -1 : 1,
+      a.stateName.toLowerCase() < b.stateName.toLowerCase() ? 1 : -1,
     )
     this.setState({stateWiseData})
   }
@@ -87,8 +90,8 @@ class Home extends Component {
     this.setState({searchState: event.target.value})
   }
 
-  renderLoader = () => (
-    <div className="loader-container">
+  renderHomeRouteLoader = () => (
+    <div testid="homeRouteLoader" className="loader-container">
       <Loader type="TailSpin" color="#007Bff" height="50" width="50" />
     </div>
   )
@@ -113,7 +116,7 @@ class Home extends Component {
           />
         </div>
         {showResults ? (
-          <ul className="search-list">
+          <ul testid="searchResultsUnorderedList" className="search-list">
             {searchResults.map(state => (
               <SearchResults key={state.state_code} state={state} />
             ))}
@@ -126,7 +129,6 @@ class Home extends Component {
               sortingAsc={this.sortingAsc}
               sortingDesc={this.sortingDesc}
             />
-            <Footer />
           </>
         )}
       </div>
@@ -138,7 +140,7 @@ class Home extends Component {
 
     switch (apiStatus) {
       case apiStatusConstants.inProgress:
-        return this.renderLoader()
+        return this.renderHomeRouteLoader()
       case apiStatusConstants.success:
         return this.renderStatsView()
       default:
@@ -151,6 +153,7 @@ class Home extends Component {
       <div className="bg-container">
         <Header />
         {this.renderStats()}
+        <Footer />
       </div>
     )
   }

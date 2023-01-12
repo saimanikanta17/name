@@ -1,4 +1,4 @@
-import {Link, withRouter} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 import './index.css'
 
@@ -12,22 +12,22 @@ const Header = () => (
       </Link>
       <ul className="nav-links-container">
         <Link to="/" className="link-style">
-          <li>Home</li>
+          <button type="button">Home</button>
         </Link>
         <Link to="/about" className="link-style">
-          <li>About</li>
+          <button type="button">About</button>
         </Link>
       </ul>
     </nav>
     <ul className="nav-links-sm-container">
       <Link to="/" className="link-style">
-        <li>Home</li>
+        <button type="button">Home</button>
       </Link>
       <Link to="/about" className="link-style">
-        <li>About</li>
+        <button type="button">About</button>
       </Link>
     </ul>
   </>
 )
 
-export default withRouter(Header)
+export default Header

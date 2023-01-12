@@ -13,8 +13,11 @@ const CountryStats = props => {
   const activeCases = confirmedCases - (recoveredCases + deceasedCases)
 
   return (
-    <div className="stats-container">
-      <div className={`confirmed-card ${'stat-card'}`}>
+    <ul className="stats-container">
+      <div
+        testid="countryWideConfirmedCases"
+        className={`confirmed-card ${'stat-card'}`}
+      >
         <p>Confirmed</p>
         <img
           src="https://res.cloudinary.com/djy2od68c/image/upload/v1672747947/check-mark_1_zgzdjy.png"
@@ -23,7 +26,10 @@ const CountryStats = props => {
         />
         <p>{confirmedCases}</p>
       </div>
-      <div className={`active-card ${'stat-card'}`}>
+      <div
+        testid="countryWideActiveCases"
+        className={`active-card ${'stat-card'}`}
+      >
         <p>Active</p>
         <img
           src="https://res.cloudinary.com/djy2od68c/image/upload/v1672748000/protection_1_kwud79.png"
@@ -32,7 +38,10 @@ const CountryStats = props => {
         />
         <p>{activeCases}</p>
       </div>
-      <div className={`recovered-card ${'stat-card'}`}>
+      <div
+        testid="countryWideRecoveredCases"
+        className={`recovered-card ${'stat-card'}`}
+      >
         <p>Recovered</p>
         <img
           src="https://res.cloudinary.com/djy2od68c/image/upload/v1672748049/recovered_1_1_fhgv0r.png"
@@ -41,7 +50,10 @@ const CountryStats = props => {
         />
         <p>{recoveredCases}</p>
       </div>
-      <div className={`deceased-card ${'stat-card'}`}>
+      <div
+        testid="countryWideDeceasedCases"
+        className={`deceased-card ${'stat-card'}`}
+      >
         <p>Deceased</p>
         <img
           src="https://res.cloudinary.com/djy2od68c/image/upload/v1672748066/breathing_1_ya1lcf.png"
@@ -50,7 +62,7 @@ const CountryStats = props => {
         />
         <p>{deceasedCases}</p>
       </div>
-    </div>
+    </ul>
   )
 }
 
