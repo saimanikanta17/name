@@ -49,3 +49,13 @@
 .district-name {
   font-size: 25px;
 }
+.line-chart {
+  width: 200px;
+}
+
+.specific-state-card {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #161625;
+  color: #cbd5e1;
+}

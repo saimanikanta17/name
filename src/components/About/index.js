@@ -45,7 +45,7 @@ class About extends Component {
   }
 
   renderLoader = () => (
-    <div testid="aboutRouteLoader" className="loader-container">
+    <div className="loader-container">
       <Loader type="TailSpin" color="#007Bff" height="50" width="50" />
     </div>
   )
@@ -56,7 +56,7 @@ class About extends Component {
       <>
         <h1>About</h1>
         <p>COVID-19 vaccines be ready for distribution</p>
-        <ul testid="faqsUnorderedList" className="faq-card">
+        <ul className="faq-card">
           {faqsList.map(faq => (
             <Faqs key={faq.qno} faq={faq} />
           ))}

@@ -170,13 +170,13 @@ class SpecificState extends Component {
   }
 
   renderLoader = () => (
-    <div testid="stateDetailsLoader" className="loader-container">
+    <div className="loader-container">
       <Loader type="TailSpin" color="#007Bff" height="50" width="50" />
     </div>
   )
 
   showTimeLineLoader = () => (
-    <div testid="timelinesDataLoader" className="loader-container">
+    <div className="loader-container">
       <Loader type="TailSpin" color="#007Bff" height="50" width="50" />
     </div>
   )
@@ -194,7 +194,7 @@ class SpecificState extends Component {
       color = '#ff073a'
     }
     return (
-      <div>
+      <div className="line-chart">
         <LineChart
           width={730}
           height={250}
@@ -216,7 +216,7 @@ class SpecificState extends Component {
     return (
       <>
         <h1 className="spread-trends">Daily Spread Trends</h1>
-        <div testid="lineChartsContainer">
+        <div>
           {caseList.map(t => (
             <div key={t}>{this.renderLineChart(t)}</div>
           ))}
@@ -233,7 +233,7 @@ class SpecificState extends Component {
       timeLineDetails,
     } = this.state
     const {tested, stateName, lastUpdated} = stateDetails
-
+    const updatedDate = lastUpdated.substring(0, 10)
     return (
       <>
         <div className="state-details">
@@ -241,7 +241,7 @@ class SpecificState extends Component {
             <div className="state-name">
               <h1>{stateName}</h1>
             </div>
-            <p>Last update on {lastUpdated}.</p>
+            <p>Last update on {updatedDate}.</p>
           </div>
           <div className="tested-card">
             <p>Tested</p>
@@ -253,7 +253,7 @@ class SpecificState extends Component {
           changeCaseType={this.changeCaseType}
         />
         <h1 className={`district-name ${caseType}`}>Top Districts</h1>
-        <ul testid="topDistrictsUnorderedList" className="district-cases">
+        <ul className="district-cases">
           {districtsDetails.map(eachDistrict => (
             <TopDistricts
               eachDistrict={eachDistrict}
@@ -296,7 +296,7 @@ class SpecificState extends Component {
 
   render() {
     return (
-      <div className="bg-container">
+      <div className="specific-state-card">
         <Header />
         <div className="specific-state-container">
           {this.renderStateDetails()}

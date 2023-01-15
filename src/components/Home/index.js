@@ -60,10 +60,7 @@ class Home extends Component {
       this.getFormattedData(state, fetchedData),
     )
 
-    stateWiseData.sort((a, b) =>
-      a.stateName.toLowerCase() > b.stateName.toLowerCase() ? 1 : -1,
-    )
-
+    stateWiseData.sort((a, b) => a.stateName - b.stateName)
     this.setState({
       apiStatus: apiStatusConstants.success,
       stateWiseData,
@@ -73,7 +70,7 @@ class Home extends Component {
   sortingAsc = () => {
     const {stateWiseData} = this.state
     stateWiseData.sort((a, b) =>
-      a.stateName.toLowerCase() > b.stateName.toLowerCase() ? 1 : -1,
+      a.stateName.toLowerCase() < b.stateName.toLowerCase() ? -1 : 1,
     )
     this.setState({stateWiseData})
   }
@@ -81,7 +78,7 @@ class Home extends Component {
   sortingDesc = () => {
     const {stateWiseData} = this.state
     stateWiseData.sort((a, b) =>
-      a.stateName.toLowerCase() < b.stateName.toLowerCase() ? 1 : -1,
+      a.stateName.toLowerCase() > b.stateName.toLowerCase() ? -1 : 1,
     )
     this.setState({stateWiseData})
   }
@@ -91,7 +88,7 @@ class Home extends Component {
   }
 
   renderHomeRouteLoader = () => (
-    <div testid="homeRouteLoader" className="loader-container">
+    <div className="loader-container">
       <Loader type="TailSpin" color="#007Bff" height="50" width="50" />
     </div>
   )
@@ -116,7 +113,7 @@ class Home extends Component {
           />
         </div>
         {showResults ? (
-          <ul testid="searchResultsUnorderedList" className="search-list">
+          <ul className="search-list">
             {searchResults.map(state => (
               <SearchResults key={state.state_code} state={state} />
             ))}
@@ -124,11 +121,14 @@ class Home extends Component {
         ) : (
           <>
             <CountryStats stateWiseData={stateWiseData} />
-            <StateStats
-              stateWiseData={stateWiseData}
-              sortingAsc={this.sortingAsc}
-              sortingDesc={this.sortingDesc}
-            />
+            <div className="state-stats">
+              <StateStats
+                stateWiseData={stateWiseData}
+                sortingAsc={this.sortingAsc}
+                sortingDesc={this.sortingDesc}
+              />
+            </div>
+            <Footer />
           </>
         )}
       </div>
@@ -153,7 +153,6 @@ class Home extends Component {
       <div className="bg-container">
         <Header />
         {this.renderStats()}
-        <Footer />
       </div>
     )
   }

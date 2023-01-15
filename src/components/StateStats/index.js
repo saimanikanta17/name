@@ -33,43 +33,33 @@ const StateStats = props => {
     sortingDesc()
   }
   return (
-    <div testid="stateWiseCovidDataTable" className="state-wise-cases">
-      <ul className="state-cases-heading">
-        <li className="states-card">
+    <div className="state-wise-cases">
+      <div className="state-cases-heading">
+        <div className="states-card">
           <p>States/UT</p>
-          <button
-            type="button"
-            testid="ascendingSort"
-            className="btn"
-            onClick={clickSortingAsc}
-          >
+          <button type="button" className="btn" onClick={clickSortingAsc}>
             <FcGenericSortingAsc size="25px" />
           </button>
-          <button
-            type="button"
-            testid="descendingSort"
-            className="btn"
-            onClick={clickSortingDesc}
-          >
+          <button type="button" className="btn" onClick={clickSortingDesc}>
             <FcGenericSortingDesc size="25px" />
           </button>
-        </li>
-        <li className="count-card">
+        </div>
+        <div className="count-card">
           <p>Confirmed</p>
-        </li>
-        <li className="count-card">
+        </div>
+        <div className="count-card">
           <p>Active</p>
-        </li>
-        <li className="count-card">
+        </div>
+        <div className="count-card">
           <p>Recovered</p>
-        </li>
-        <li className="count-card">
+        </div>
+        <div className="count-card">
           <p>Deceased</p>
-        </li>
-        <li className="count-card">
+        </div>
+        <div className="count-card">
           <p>Population</p>
-        </li>
-      </ul>
+        </div>
+      </div>
       <ul className="stats-details">
         {stateWiseData.map(stateDate => (
           <State key={stateDate.stateCode} stateDate={stateDate} />
