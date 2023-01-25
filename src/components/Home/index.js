@@ -150,7 +150,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="bg-container">
+      <div className="home-container">
         <Header />
         {this.renderStats()}
       </div>
